@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+    id "io.spring.dependency-management" version "1.0.6.RELEASE"
+}
+
+group 'com.discord4j'
+version '1.0.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    jcenter()
+    maven { url "https://dl.bintray.com/austinv11/maven" }
+    maven { url 'https://jitpack.io' }
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "com.discord4j:bom:3.0.0-pre.0"
+    }
+}
+
+dependencies {
+    compile "com.discord4j:discord4j-core"
+}
