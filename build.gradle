@@ -9,12 +9,11 @@ sourceCompatibility = 1.8
 
 repositories {
     jcenter()
-    maven { url 'https://jitpack.io' }
 }
 
 dependencyManagement {
     imports {
-        mavenBom "com.discord4j:bom:3.0.0.M1"
+        mavenBom "com.discord4j:bom:3.0.0.M2"
     }
 }
 
