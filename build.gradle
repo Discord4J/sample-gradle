@@ -13,7 +13,7 @@ repositories {
 
 dependencyManagement {
     imports {
-        mavenBom "com.discord4j:bom:3.0.0.M2"
+        mavenBom "com.discord4j:bom:3.0.0.M3-1"
     }
 }
 
