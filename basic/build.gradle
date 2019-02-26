@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+}
+
+group 'com.discord4j'
+version '1.0.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    // This is repository is optional for pre-releases
+    maven { url 'https://oss.sonatype.org/content/repositories/staging' }
+}
+
+dependencies {
+    compile "com.discord4j:discord4j-core:$d4jVersion"
+}

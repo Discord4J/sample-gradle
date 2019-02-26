@@ -1,2 +1,4 @@
 rootProject.name = 'sample-gradle'
 
+include 'bill-of-materials'
+include 'basic'
