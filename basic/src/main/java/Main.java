@@ -10,8 +10,7 @@ import discord4j.store.jdk.JdkStoreService;
 public class Main {
 
     public static void main(String[] args) {
-        DiscordClientBuilder builder = new DiscordClientBuilder(System.getenv("token"));
-        DiscordClient client = builder.setStoreService(new ReadOnlyStoreService(new JdkStoreService())).build();
+        DiscordClient client = new DiscordClientBuilder(System.getenv("token")).build();
 
         client.getEventDispatcher().on(ReadyEvent.class)
                 .subscribe(event -> {
