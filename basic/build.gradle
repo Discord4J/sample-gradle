@@ -8,10 +8,9 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
-    // This is repository is optional for pre-releases
-    maven { url 'https://oss.sonatype.org/content/repositories/staging' }
 }
 
 dependencies {
-    compile "com.discord4j:discord4j-core:$d4jVersion"
+    implementation "com.discord4j:discord4j-core:3.0.12"
+    implementation "ch.qos.logback:logback-classic:1.3.0-alpha4"
 }
