@@ -15,12 +15,11 @@
  * along with Discord4J. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package support;
+package command;
 
-import discord4j.core.event.domain.message.MessageCreateEvent;
-import reactor.core.publisher.Mono;
+import org.reactivestreams.Publisher;
 
-public abstract class EventHandler {
+import java.util.function.BiFunction;
 
-    public abstract Mono<Void> onMessageCreate(MessageCreateEvent event);
+public interface Command extends BiFunction<CommandRequest, CommandResponse, Publisher<Void>> {
 }
