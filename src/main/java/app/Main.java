@@ -29,15 +29,9 @@ public class Main {
                 .on("echo", Commands::echo)
                 .on("exit", (req, res) -> req.getClient().logout())
                 .on("status", Commands::status)
-                .on("requestMembers", Commands::requestMembers)
-                .on("getMembers", Commands::getMembers)
-                .on("addRole", Commands::addRole)
                 .on("changeAvatar", Commands::changeAvatar)
-                .on("changeLogLevel", Commands::logLevelChange)
                 .on("react", new AddRandomReaction())
-                .on("userinfo", Commands::userInfo)
-                .on("reactionRemove", Commands::reactionRemove)
-                .on("leaveGuild", Commands::leaveGuild);
+                .on("userinfo", Commands::userInfo);
 
         Mono.when(client.on(listener), VoiceSupport.create(client).eventHandlers()).block();
     }

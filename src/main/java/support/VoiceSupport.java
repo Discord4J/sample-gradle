@@ -54,7 +54,7 @@ public class VoiceSupport {
         AudioProvider provider = new LavaplayerAudioProvider(player);
 
         Mono<Void> join = client.getEventDispatcher().on(MessageCreateEvent.class)
-                .filter(e -> e.getMessage().getContent().equals("!join"))
+                .filter(e -> e.getMessage().getContent().equals("!!join"))
                 .doOnNext(e -> log.info("Received voice join request"))
                 .flatMap(e -> Mono.justOrEmpty(e.getMember())
                         .flatMap(Member::getVoiceState)
@@ -69,7 +69,7 @@ public class VoiceSupport {
                 .then();
 
         Mono<Void> leave = client.getEventDispatcher().on(MessageCreateEvent.class)
-                .filter(e -> e.getMessage().getContent().equals("!leave"))
+                .filter(e -> e.getMessage().getContent().equals("!!leave"))
                 .doOnNext(e -> log.info("Received voice leave request"))
                 .flatMap(e -> Mono.justOrEmpty(e.getMember())
                         .flatMap(Member::getVoiceState)
@@ -84,7 +84,7 @@ public class VoiceSupport {
                 .then();
 
         Mono<Void> reconnect = client.getEventDispatcher().on(MessageCreateEvent.class)
-                .filter(e -> e.getMessage().getContent().equals("!vcretry"))
+                .filter(e -> e.getMessage().getContent().equals("!!voiceretry"))
                 .flatMap(e -> Mono.justOrEmpty(e.getMember())
                         .flatMap(Member::getVoiceState)
                         .flatMap(vs -> client.getVoiceConnectionRegistry()
@@ -94,7 +94,7 @@ public class VoiceSupport {
                 .then();
 
         Mono<Void> resume = client.getEventDispatcher().on(MessageCreateEvent.class)
-                .filter(e -> e.getMessage().getContent().equals("!vcresume"))
+                .filter(e -> e.getMessage().getContent().equals("!!voiceresume"))
                 .flatMap(e -> Mono.justOrEmpty(e.getMember())
                         .flatMap(Member::getVoiceState)
                         .flatMap(vs -> client.getVoiceConnectionRegistry()
@@ -104,7 +104,7 @@ public class VoiceSupport {
                 .then();
 
         Mono<Void> play = client.getEventDispatcher().on(MessageCreateEvent.class)
-                .filter(e -> e.getMessage().getContent().startsWith("!play "))
+                .filter(e -> e.getMessage().getContent().startsWith("!!play "))
                 .flatMap(e -> Mono.justOrEmpty(e.getMessage().getContent())
                         .map(content -> Arrays.asList(content.split(" ")))
                         .doOnNext(command -> playerManager.loadItem(command.get(1),
@@ -112,7 +112,7 @@ public class VoiceSupport {
                 .then();
 
         Mono<Void> stop = client.getEventDispatcher().on(MessageCreateEvent.class)
-                .filter(e -> e.getMessage().getContent().equals("!stop"))
+                .filter(e -> e.getMessage().getContent().equals("!!stop"))
                 .doOnNext(e -> player.stopTrack())
                 .then();
 
